@@ -48,7 +48,7 @@ withMaven(maven: 'Ankit_jenkins_Maven')
 }
 
 {
-Stage ('deploy to tomcat')
+stage ('deploy to tomcat')
 	{
 
 steps {
