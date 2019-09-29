@@ -21,4 +21,17 @@ withMaven(maven: 'Ankit_jenkins_Maven')
 }
 }
 }
+
+ {
+   
+stage ('create package'){
+
+steps {
+withMaven(maven: 'Ankit_jenkins_Maven') 
+{
+   sh 'mvn package'
+}
+}
+}
+}
 }
