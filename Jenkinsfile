@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	stages{
 		stage ("scm checkout"){
-git 'https://github.com/ANKITSHARAF1808/jenkins_pipeline_hello.git'
+git 'https://github.com/ANKITSHARAF1808/maven-project.git'
 							  }
 		  }
    {
