@@ -53,7 +53,7 @@ stage ("Invoke Sonarqube validation")
 {
 steps
 {
-withSonarQubeEnv(credentialsId: 'sonar') 
+withSonarQubeEnv('sonar') 
 {
     sh 'clean install sonar:sonar'
     }
