@@ -1,4 +1,3 @@
-
 pipeline {
 	agent any
 	
@@ -9,55 +8,49 @@ pipeline {
 		{
 git 'https://github.com/ANKITSHARAF1808/maven-project.git'
 		}
-		}
+	}
    {
-   
-stage ('Test stage'){
+		stage ('Test stage'){
+			steps {
+				withMaven(maven: 'Ankit_jenkins_Maven') 
+					{
+						sh 'mvn test'
+					}
+				}
+			}
+	}
 
-steps {
-withMaven(maven: 'Ankit_jenkins_Maven') 
-{
-   sh 'mvn test'
-}
-}
-}
-}
+	{
+ 	stage ('create package'){
+			steps {
+					withMaven(maven: 'Ankit_jenkins_Maven') 
+						{
+							sh 'mvn package'
+						}
+					}
+				}
+	}
+	{
+   stage ('Install package'){
+		steps {
+			withMaven(maven: 'Ankit_jenkins_Maven') 
+				{
+					sh 'mvn install'
+				}
+			}
+		}
+	}
 
- {
-   
-stage ('create package'){
-
-steps {
-withMaven(maven: 'Ankit_jenkins_Maven') 
-{
-   sh 'mvn package'
-}
-}
-}
-}
- {
-   
-stage ('Install package'){
-
-steps {
-withMaven(maven: 'Ankit_jenkins_Maven') 
-{
-   sh 'mvn install'
-}
-}
-}
-}
-
-{
-stage ("Invoke Sonarqube validation")
-{
-steps
-{
-withSonarQubeEnv('sonar11') 
-{
-    sh 'clean install sonar:sonar'
-    }
-}
-}
-}
+	{
+		stage ("Invoke Sonarqube validation")
+		{
+			steps
+				{
+					withSonarQubeEnv('sonar11') 
+						{
+							sh 'clean install sonar:sonar'
+						}
+				}
+		}
+	}
 }
