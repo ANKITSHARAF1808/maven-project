@@ -46,7 +46,7 @@ git 'https://github.com/ANKITSHARAF1808/maven-project.git'
 		{
 			steps
 				{
-					withSonarQubeEnv('sonar11') 
+					withSonarQubeEnv('sonar') 
 						{
 							sh 'clean install sonar:sonar'
 						}
