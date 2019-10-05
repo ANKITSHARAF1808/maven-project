@@ -55,7 +55,7 @@ steps
 {
 withSonarQubeEnv(credentialsId: 'sonar') 
 {
-    sh 'mvn clean sonar:sonar'
+    sh 'clean install sonar:sonar'
     }
 }
 }
