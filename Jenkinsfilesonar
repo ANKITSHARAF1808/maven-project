@@ -41,17 +41,5 @@ git 'https://github.com/ANKITSHARAF1808/maven-project.git'
 		}
 	}
 
-	{
-		stage ("Invoke Sonarqube validation")
-		{
-			steps
-				{
-					withSonarQubeEnv('sonar') 
-					withMaven(maven: 'Ankit_jenkins_Maven') 
-						{
-							sh 'clean install sonar:sonar'
-						}
-				}
-		}
-	}
+	
 }
